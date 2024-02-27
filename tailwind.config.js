@@ -12,6 +12,9 @@ export default {
         primary: "1280px",
       },
     },
+    daisyui: {
+      themes: ["light"],
+    },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 };
