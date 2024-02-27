@@ -1,4 +1,5 @@
 import Home from "@/pages/Home";
+import NotFoud from "@/pages/NotFoud";
 import { MainLayout } from "@/templates";
 import {
   Route,
@@ -10,6 +11,7 @@ export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<MainLayout />}>
       <Route index element={<Home />}></Route>
+      <Route path="*" element={<NotFoud />}></Route>
     </Route>
   )
 );
