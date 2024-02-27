@@ -1,7 +1,9 @@
+import { router } from "@/routes/root";
 import React from "react";
+import { RouterProvider } from "react-router-dom";
 
 const App: React.FunctionComponent = () => {
-  return <h2 className="text-red-600">Hello world</h2>;
+  return <RouterProvider router={router} />;
 };
 
 export default App;

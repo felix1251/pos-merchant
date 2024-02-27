@@ -1,13 +1,12 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 
-interface IMainLayoutProps {
-  children: React.ReactNode;
-}
-
-const MainLayout: React.FunctionComponent<IMainLayoutProps> = ({
-  children,
-}: IMainLayoutProps) => {
-  return <div>{children}</div>;
+const MainLayout: React.FunctionComponent = () => {
+  return (
+    <div>
+      <Outlet />
+    </div>
+  );
 };
 
 export default MainLayout;
