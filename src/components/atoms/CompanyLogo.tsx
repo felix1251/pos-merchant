@@ -6,7 +6,7 @@ const CompanyLogo: React.FunctionComponent = () => {
       version="1.2"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1782 343"
-      className="h-6"
+      className="h-7"
       fill="#25AE9C"
     >
       <path d="m293 343l-94-98c0 0-14.2 14-48 14-33.8 0-61.8-18.6-69-38 0 0-5.9 3-15 3-9.1 0-67-8.8-67-70 0-71.6 86.7-154 192-154 121 0 197 100 197 169 0 43.2-26.7 51-32 51 0 0 10.8 54.3-80 62"></path>
