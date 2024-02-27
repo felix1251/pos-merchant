@@ -1,0 +1,14 @@
+name: Lint CI
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: Run lint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '18.x'
+    - run: npm install
+    - run: npm run lint
