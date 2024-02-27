@@ -5,8 +5,7 @@ export default {
     extend: {
       colors: {
         primary: "#25AE9C",
-        secondary: "#363738",
-        "secondary-light": "#7D8184",
+        secondary: "#2E384D",
       },
       maxWidth: {
         primary: "1280px",
