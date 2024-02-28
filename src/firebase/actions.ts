@@ -1,20 +1,24 @@
 import { IItemData } from "@/components/molecules/ItemForm";
 import app from "@/firebase";
 import { getDatabase, push, ref, remove, set } from "firebase/database";
+import toast from "react-hot-toast";
+import { NavigateFunction } from "react-router-dom";
 
 export const createItem = (
   item: IItemData,
-  setSubmitting: (value: boolean) => void
+  setSubmitting: (value: boolean) => void,
+  navigate: NavigateFunction
 ) => {
   const db = getDatabase(app);
   const newItemRef = push(ref(db, "items"));
 
   set(newItemRef, item)
     .then(() => {
-      setSubmitting(false);
+      toast.success("Item successfully created");
+      navigate("/");
     })
     .catch((err) => {
-      alert("Error: " + err.message);
+      toast.error(err.message);
       setSubmitting(false);
     });
 };
@@ -29,10 +33,11 @@ export const updateItem = (
 
   set(updateItemRef, otherItemData)
     .then(() => {
+      toast.success("Item successfully updated");
       setSubmitting(false);
     })
     .catch((err) => {
-      alert("Error: " + err.message);
+      toast.error(err.message);
       setSubmitting(false);
     });
 };
@@ -46,9 +51,10 @@ export const deleteItem = (
 
   remove(removeItemRef)
     .then(() => {
+      toast.success("Item successfully deleted");
       if (mutate) mutate();
     })
     .catch((err) => {
-      alert("Error: " + err.message);
+      toast.error(err.message);
     });
 };

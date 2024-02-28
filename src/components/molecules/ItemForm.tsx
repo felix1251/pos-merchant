@@ -6,6 +6,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { ImSpinner8 } from "react-icons/im";
 import { IoMdSend } from "react-icons/io";
 import { LuPlus } from "react-icons/lu";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
 const ItemForm: React.FunctionComponent<IItemFormProp> = ({
@@ -15,6 +16,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
   loading = false,
   error = "",
 }: IItemFormProp) => {
+  const navigate = useNavigate();
   const [option, setOption] = useState<string>("");
   const categoryOptions = ["Cake", "Pie", "Fried"];
 
@@ -47,7 +49,8 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
       if (!isEditing) {
         createItem(
           { ...values, options: values.options.join() },
-          formik.setSubmitting
+          formik.setSubmitting,
+          navigate
         );
         return;
       }

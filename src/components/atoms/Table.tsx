@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { TableLoading } from "@/atoms";
 import React from "react";
+import { AiOutlineInbox } from "react-icons/ai";
 
 const Table: React.FunctionComponent<ITableProps<IData>> = ({
   tHeads = [],
@@ -29,9 +30,9 @@ const Table: React.FunctionComponent<ITableProps<IData>> = ({
           {!loading ? (
             <>
               {data.map((item, idx) => (
-                <tr className="font-medium text-lg" key={idx}>
+                <tr className="font-medium" key={idx}>
                   {tHeads.map((head) => (
-                    <td className="pl-0" key={head.key}>
+                    <td className="pl-0 text-[1.05rem]" key={head.key}>
                       {head.render ? head.render(item) : item[head.key]}
                     </td>
                   ))}
@@ -46,6 +47,14 @@ const Table: React.FunctionComponent<ITableProps<IData>> = ({
           )}
         </tbody>
       </table>
+      {!loading && data.length === 0 && (
+        <div className="flex items-center justify-center text-2xl text-secondary/50 font-bold bg-gray-50 px-5 h-60 rounded-b-lg">
+          <div className="flex gap-2.5 items-center">
+            <AiOutlineInbox className="text-4xl" />
+            <span>No data found</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

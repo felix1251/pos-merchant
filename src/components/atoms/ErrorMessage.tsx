@@ -8,10 +8,10 @@ const ErrorMessage: React.FunctionComponent<IErrorMessage> = ({
   message,
 }: IErrorMessage) => {
   return (
-    <div role="alert" className="alert alert-error">
+    <div role="alert" className="alert alert-error text-white font-medium">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="stroke-current shrink-0 h-6 w-6"
+        className="stroke-current shrink-0 h-7 w-7"
         fill="none"
         viewBox="0 0 24 24"
       >
