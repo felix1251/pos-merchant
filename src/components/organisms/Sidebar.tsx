@@ -6,7 +6,7 @@ import { IoBagCheck, IoBagHandle } from "react-icons/io5";
 
 const Sidebar: React.FunctionComponent = () => {
   return (
-    <div className="fixed bottom-0 min-w-full border-r bg-white md:sticky md:top-0 md:h-screen lg:min-w-72">
+    <div className="fixed bottom-0 min-w-full border-r bg-white md:sticky md:top-0 md:h-screen md:min-w-60 lg:min-w-72">
       <div className="hidden flex-col items-start justify-start p-5 md:flex">
         <CompanyLogo />
         <div className="-mt-2 ml-9 text-lg font-bold text-secondary/80">
