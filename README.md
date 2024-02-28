@@ -99,3 +99,33 @@ I use TailwindCSS for the styles and all the components are custom-made to ensur
     "vite-tsconfig-paths": "^4.3.1"
   }
 ```
+
+## Screenshots
+
+The application does not have authentication so we assume that we are already logged in and premitted to do CRUD for the items.
+
+### Item list view
+
+Web item list page
+
+![Web item list](/screenshots/web-item-list.png)
+
+Mobile item list page
+
+![mobile item list](/screenshots/mobile-item-list.png)
+
+Web item create page
+
+![Web item create page](/screenshots/web-item-creation.png)
+
+Mobile item create page
+
+![Mobile item create page](/screenshots/mobile-item-creation.png)
+
+Web item update page
+
+![Web item update page](/screenshots/web-item-update.png)
+
+Mobile item update page
+
+![Mobile item update page](/screenshots/mobile-item-update.png)
