@@ -1,7 +1,8 @@
-import { Breadcrumbs } from "@/atoms";
+import { Breadcrumbs, FallbackLoading } from "@/atoms";
 import { ICrumb } from "@/components/atoms/Breadcrumbs";
-import { ItemForm } from "@/molecules";
-import React from "react";
+import React, { Suspense } from "react";
+
+const ItemForm = React.lazy(() => import("@/components/molecules/ItemForm"));
 
 const ItemCreate: React.FunctionComponent = () => {
   const breadcrumbs: ICrumb[] = [{ name: "Items", link: "/" }, { name: "New" }];
@@ -9,7 +10,9 @@ const ItemCreate: React.FunctionComponent = () => {
   return (
     <div className="flex flex-col gap-3">
       <Breadcrumbs crumbs={breadcrumbs} />
-      <ItemForm label="Create Item" />
+      <Suspense fallback={<FallbackLoading />}>
+        <ItemForm label="Create Item" />
+      </Suspense>
     </div>
   );
 };

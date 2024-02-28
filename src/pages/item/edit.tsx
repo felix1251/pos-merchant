@@ -1,9 +1,11 @@
-import { Breadcrumbs } from "@/atoms";
+import { Breadcrumbs, FallbackLoading } from "@/atoms";
 import { ICrumb } from "@/components/atoms/Breadcrumbs";
 import { useFirebaseItem } from "@/firebase/hooks";
-import { ItemForm } from "@/molecules";
-import React from "react";
+
+import React, { Suspense } from "react";
 import { useParams } from "react-router-dom";
+
+const ItemForm = React.lazy(() => import("@/components/molecules/ItemForm"));
 
 const ItemEdit: React.FunctionComponent = () => {
   const params = useParams<{ id: string }>();
@@ -12,13 +14,15 @@ const ItemEdit: React.FunctionComponent = () => {
   return (
     <div className="flex flex-col gap-3">
       <Breadcrumbs crumbs={breadcrumbs} />
-      <ItemForm
-        label="Edit Item"
-        isEditing
-        itemData={data}
-        loading={loading || error.length > 0}
-        error={error}
-      />
+      <Suspense fallback={<FallbackLoading />}>
+        <ItemForm
+          label="Edit Item"
+          isEditing
+          itemData={data}
+          loading={loading || error.length > 0}
+          error={error}
+        />
+      </Suspense>
     </div>
   );
 };

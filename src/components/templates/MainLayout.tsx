@@ -1,5 +1,6 @@
+import { FallbackLoading } from "@/atoms";
 import { Navbar, Sidebar } from "@/organisms";
-import React from "react";
+import React, { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import { Outlet } from "react-router-dom";
 
@@ -12,7 +13,9 @@ const MainLayout: React.FunctionComponent = () => {
         <div className="mb-20 flex w-full flex-col md:mb-0">
           <Navbar />
           <main className="margin-max-screen pb-4 pt-6">
-            <Outlet />
+            <Suspense fallback={<FallbackLoading />}>
+              <Outlet />
+            </Suspense>
           </main>
         </div>
       </div>
