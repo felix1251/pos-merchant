@@ -1,14 +1,13 @@
 import { Badge, Button, ErrorMessage, Table } from "@/atoms";
-
 import { deleteItem } from "@/firebase/actions";
 import { useFirebaseItems } from "@/firebase/hooks";
+import { IItemData } from "@/types/item.interface";
 import React from "react";
 import { BiSolidEdit, BiSolidTrash } from "react-icons/bi";
 import { ImSpinner8 } from "react-icons/im";
 import { LuPlus } from "react-icons/lu";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { IItemData } from "./item.interface";
 
 const Home: React.FunctionComponent = () => {
   const navigate = useNavigate();
