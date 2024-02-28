@@ -7,6 +7,7 @@ interface ISelectProps {
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   error?: string | false | undefined;
   options?: string[];
+  required?: boolean;
 }
 
 const Select: React.FunctionComponent<ISelectProps> = ({
@@ -16,12 +17,14 @@ const Select: React.FunctionComponent<ISelectProps> = ({
   value = "",
   name = "",
   onChange,
+  required = false,
 }: ISelectProps) => {
   return (
     <label className="form-control w-full">
       {label && (
-        <div className="label -mb-1">
+        <div className="label -mb-1 flex justify-start gap-0.5">
           <span className="label-text text-base font-medium">{label}</span>
+          {required && <span className="text-red-600 font-bold">*</span>}
         </div>
       )}
       <select

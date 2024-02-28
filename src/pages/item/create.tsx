@@ -9,7 +9,7 @@ const ItemCreate: React.FunctionComponent = () => {
   return (
     <div className="flex flex-col gap-3">
       <Breadcrumbs crumbs={breadcrumbs} />
-      <ItemForm />
+      <ItemForm label="Create Item" />
     </div>
   );
 };
