@@ -1,4 +1,4 @@
-import { Button, Input, Select } from "@/atoms";
+import { Button, Checkbox, Input, Select } from "@/atoms";
 import { useFormik } from "formik";
 import React from "react";
 import { IoMdSend } from "react-icons/io";
@@ -13,7 +13,7 @@ const ItemForm: React.FunctionComponent = () => {
       cost: "",
       price: "",
       stock: "",
-      hasOptions: false,
+      withOptions: false,
     },
     validationSchema: Yup.object({
       name: Yup.string().required("Name is required"),
@@ -21,7 +21,7 @@ const ItemForm: React.FunctionComponent = () => {
       cost: Yup.string().required("Cost is required"),
       price: Yup.string().required("Price is required"),
       stock: Yup.string().required("Stock is required"),
-      hasOptions: Yup.boolean(),
+      withOptions: Yup.boolean(),
     }),
     onSubmit: (values) => {
       console.log(values);
@@ -29,8 +29,6 @@ const ItemForm: React.FunctionComponent = () => {
   });
 
   const categoryOptions = ["Cake", "Pie", "Fried"];
-
-  console.log(formik.values.category);
 
   return (
     <div className="flex flex-col gap-3">
@@ -85,6 +83,14 @@ const ItemForm: React.FunctionComponent = () => {
             placeholder="0"
             onChange={formik.handleChange}
             error={formik.touched.stock && formik.errors.stock}
+          />
+        </div>
+        <div>
+          <Checkbox
+            name="withOptions"
+            label="Has Options?"
+            checked={formik.values.withOptions}
+            onChange={formik.handleChange}
           />
         </div>
         <div>
