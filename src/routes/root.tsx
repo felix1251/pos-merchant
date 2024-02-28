@@ -1,8 +1,7 @@
-import NotFoud from "@/pages/NotFoud";
-import Items from "@/pages/items";
-import ItemCreate from "@/pages/items/create";
-import ItemEdit from "@/pages/items/edit";
-
+import ItemCreate from "@/pages/item/create";
+import ItemEdit from "@/pages/item/edit";
+import Items from "@/pages/item/list";
+import NotFoud from "@/pages/not_found";
 import { MainLayout } from "@/templates";
 import {
   Route,
