@@ -30,7 +30,7 @@ const TextInput: React.FunctionComponent<ITextInputProps> = ({
       {label && (
         <div className="label -mb-1 flex justify-start gap-0.5">
           <span className="label-text text-base font-medium">{label}</span>
-          {required && <span className="text-red-600 font-bold">*</span>}
+          {required && <span className="font-bold text-red-600">*</span>}
         </div>
       )}
       <input
@@ -39,13 +39,13 @@ const TextInput: React.FunctionComponent<ITextInputProps> = ({
         value={value}
         placeholder={placeholder}
         disabled={disabled}
-        className={`text-base input input-md input-bordered w-full disabled:bg-gray-100 ${error ? "input-error" : ""}`}
+        className={`input input-md input-bordered w-full text-base disabled:bg-gray-100 ${error ? "input-error" : ""}`}
         onChange={onChange}
       />
       {action && <>{action}</>}
       {error && (
         <div className="label -mt-1.5">
-          <span className="label-text text-red-600 text-base">{error}</span>
+          <span className="label-text text-base text-red-600">{error}</span>
         </div>
       )}
     </label>

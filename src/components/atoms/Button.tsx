@@ -10,7 +10,7 @@ const Button: React.FunctionComponent<IButtonProps> = ({
 }: IButtonProps) => {
   return (
     <button
-      className="px-5 py-3 text-sm bg-primary text-white font-medium rounded-md hover:bg-primary/90 disabled:bg-gray-300 disabled:hover:bg-gray-300 disabled:cursor-not-allowed"
+      className="rounded-md bg-primary px-5 py-3 text-sm font-medium text-white hover:bg-primary/90 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:hover:bg-gray-300"
       {...props}
     >
       {children}

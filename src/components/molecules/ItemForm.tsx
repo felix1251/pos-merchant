@@ -79,16 +79,16 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
   const removeOption = (option: string): void => {
     formik.setFieldValue(
       "options",
-      formik.values.options.filter((opt) => opt !== option)
+      formik.values.options.filter((opt) => opt !== option),
     );
   };
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="flex gap-4 items-center">
-        <h2 className="text-3xl text-secondary font-semibold">{label}</h2>
+      <div className="flex items-center gap-4">
+        <h2 className="text-3xl font-semibold text-secondary">{label}</h2>
         {(loading || formik.isSubmitting) && !error && (
-          <ImSpinner8 className="text-3xl text-secondary animate-spin" />
+          <ImSpinner8 className="animate-spin text-3xl text-secondary" />
         )}
       </div>
       {error && <ErrorMessage message={error} />}
@@ -100,7 +100,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
           return false;
         }}
       >
-        <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-4">
+        <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
           <Input
             name="name"
             label="Name"
@@ -164,7 +164,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
           />
           {formik.values.withOptions && (
             <div className="flex flex-col gap-4">
-              <div className="lg:max-w-sm flex gap-4">
+              <div className="flex gap-4 lg:max-w-sm">
                 <Input
                   value={option}
                   placeholder="Option"
@@ -172,14 +172,14 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
                 />
                 <button
                   onClick={() => addToOptions()}
-                  className="h-12 px-3 bg-primary rounded-lg"
+                  className="h-12 rounded-lg bg-primary px-3"
                   type="button"
                 >
                   <LuPlus className="text-2xl text-white" />
                 </button>
               </div>
               {formik.values.options.map((option: string, idx: number) => (
-                <div key={idx} className="lg:max-w-sm flex gap-4">
+                <div key={idx} className="flex gap-4 lg:max-w-sm">
                   <Input
                     name={`options[${idx}]`}
                     onChange={formik.handleChange}
@@ -188,7 +188,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
                   />
                   <button
                     onClick={() => removeOption(option)}
-                    className="h-12 px-3 bg-red-600 rounded-lg"
+                    className="h-12 rounded-lg bg-red-600 px-3"
                     type="button"
                   >
                     <FaRegTrashAlt className="text-2xl text-white" />
@@ -200,7 +200,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
         </div>
         <div>
           <Button type="submit" disabled={loading || formik.isSubmitting}>
-            <div className="flex gap-2 items-center">
+            <div className="flex items-center gap-2">
               <IoMdSend className="text-lg" />
               {isEditing ? "Update" : "Save"}
             </div>

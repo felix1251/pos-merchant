@@ -11,12 +11,12 @@ const Avatar: React.FunctionComponent<IAvatarProps> = ({
   imageUrl = "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
 }: IAvatarProps) => {
   return (
-    <div className="rounded-full pl-1 pr-2 py-1 bg-primary/20 text-sm font-semibold text-primary flex items-center gap-2">
-      <div className="w-7 mask mask-circle">
+    <div className="flex items-center gap-2 rounded-full bg-primary/20 py-1 pl-1 pr-2 text-sm font-semibold text-primary">
+      <div className="mask mask-circle w-7">
         <img src={imageUrl} />
       </div>
       {name}
-      <MdKeyboardArrowDown className="text-xl mt-0.5 -ml-1" />
+      <MdKeyboardArrowDown className="-ml-1 mt-0.5 text-xl" />
     </div>
   );
 };

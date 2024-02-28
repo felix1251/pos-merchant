@@ -6,7 +6,7 @@ interface IBadgeProps {
 
 const Badge: React.FunctionComponent<IBadgeProps> = ({ name }: IBadgeProps) => {
   return (
-    <div className="w-fit px-2 py-0.5 border border-primary text-primary text-xs rounded-xl">
+    <div className="w-fit rounded-xl border border-primary px-2 py-0.5 text-xs text-primary">
       {name}
     </div>
   );

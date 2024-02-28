@@ -16,6 +16,6 @@ export const router = createBrowserRouter(
       <Route path="/items/new" element={<ItemCreate />} />
       <Route path="/items/:id/edit" element={<ItemEdit />} />
       <Route path="*" element={<NotFoud />} />
-    </Route>
-  )
+    </Route>,
+  ),
 );

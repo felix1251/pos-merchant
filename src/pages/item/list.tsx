@@ -20,7 +20,7 @@ const Home: React.FunctionComponent = () => {
       key: "name",
       name: "Name",
       headCustomClass: "text-primary",
-      icon: <MdKeyboardArrowDown className="text-xl mt-0.5 -ml-1" />,
+      icon: <MdKeyboardArrowDown className="-ml-1 mt-0.5 text-xl" />,
     },
     { key: "category", name: "Category" },
     {
@@ -29,7 +29,7 @@ const Home: React.FunctionComponent = () => {
       render: (value: IItemData) => (
         <>
           {value.withOptions && (
-            <div className="flex gap-1 flex-wrap">
+            <div className="flex flex-wrap gap-1 md:flex-nowrap ">
               {value.options &&
                 value.options
                   .split(",")
@@ -47,12 +47,12 @@ const Home: React.FunctionComponent = () => {
       name: "Actions",
       headCustomClass: "flex justify-end",
       render: (value: IItemData) => (
-        <div className="flex gap-2 justify-end">
+        <div className="flex justify-end gap-2">
           <button onClick={() => navigate(`items/${value.id}/edit`)}>
-            <BiSolidEdit className="text-gray-400 text-2xl hover:text-primary" />
+            <BiSolidEdit className="text-2xl text-gray-400 hover:text-primary" />
           </button>
           <button onClick={() => deleteItem(value.id, mutate)}>
-            <BiSolidTrash className="text-gray-400  text-2xl hover:text-red-600" />
+            <BiSolidTrash className="text-2xl  text-gray-400 hover:text-red-600" />
           </button>
         </div>
       ),
@@ -60,12 +60,12 @@ const Home: React.FunctionComponent = () => {
   ];
 
   return (
-    <div className="w-full flex flex-col gap-6">
-      <div className="flex gap-5 items-center justify-between">
-        <div className="flex gap-4 items-center">
-          <h2 className="text-2xl text-secondary font-semibold">Item List</h2>
+    <div className="flex w-full flex-col gap-6">
+      <div className="flex items-center justify-between gap-5">
+        <div className="flex items-center gap-4">
+          <h2 className="text-2xl font-semibold text-secondary">Item List</h2>
           {loading && (
-            <ImSpinner8 className="text-2xl text-secondary animate-spin" />
+            <ImSpinner8 className="animate-spin text-2xl text-secondary" />
           )}
         </div>
         <Button onClick={() => navigate("/items/new")}>

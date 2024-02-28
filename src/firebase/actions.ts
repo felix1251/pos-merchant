@@ -7,7 +7,7 @@ import { NavigateFunction } from "react-router-dom";
 export const createItem = (
   item: IItemData,
   setSubmitting: (value: boolean) => void,
-  navigate: NavigateFunction
+  navigate: NavigateFunction,
 ) => {
   const db = getDatabase(app);
   const newItemRef = push(ref(db, "items"));
@@ -25,7 +25,7 @@ export const createItem = (
 
 export const updateItem = (
   item: IItemData,
-  setSubmitting: (value: boolean) => void
+  setSubmitting: (value: boolean) => void,
 ) => {
   const { id, ...otherItemData } = item;
   const db = getDatabase(app);
@@ -44,7 +44,7 @@ export const updateItem = (
 
 export const deleteItem = (
   id: string | undefined,
-  mutate: (() => Promise<void>) | void | undefined
+  mutate: (() => Promise<void>) | void | undefined,
 ) => {
   const db = getDatabase(app);
   const removeItemRef = ref(db, `items/${id}`);

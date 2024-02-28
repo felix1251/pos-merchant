@@ -16,13 +16,13 @@ const Checkbox: React.FunctionComponent<ICheckboxProps> = ({
   disabled = false,
 }: ICheckboxProps) => {
   return (
-    <label className="p-0 flex justify-start gap-2.5 label cursor-pointer w-fit">
+    <label className="label flex w-fit cursor-pointer justify-start gap-2.5 p-0">
       <input
         name={name}
         type="checkbox"
         disabled={disabled}
         checked={checked}
-        className="rounded-sm checkbox checkbox-sm disabled:bg-gray-400"
+        className="checkbox checkbox-sm rounded-sm disabled:bg-gray-400"
         onChange={onChange}
       />
       {label && (

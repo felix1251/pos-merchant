@@ -9,8 +9,8 @@ const Table: React.FunctionComponent<ITableProps<IData>> = ({
   loading = false,
 }: ITableProps<IData>) => {
   return (
-    <div className="overflow-x-auto w-full">
-      <table className="table table-lg table-pin-rows">
+    <div className="w-full overflow-x-auto">
+      <table className="table table-pin-rows table-lg">
         <thead>
           <tr>
             {tHeads.map((head) => (
@@ -18,7 +18,7 @@ const Table: React.FunctionComponent<ITableProps<IData>> = ({
                 className={`pl-0 text-base md:text-sm ${head.headCustomClass ? head.headCustomClass : ""}`}
                 key={head.key}
               >
-                <div className="flex gap-2 items-center">
+                <div className="flex items-center gap-2 text-nowrap">
                   {head.name}
                   {head.icon}
                 </div>
@@ -33,7 +33,7 @@ const Table: React.FunctionComponent<ITableProps<IData>> = ({
                 <tr className="font-medium" key={idx}>
                   {tHeads.map((head) => (
                     <td
-                      className="pl-0 text-lg md:text-[1.05rem]"
+                      className="text-nowrap pl-0 text-lg md:text-[1.05rem]"
                       key={head.key}
                     >
                       {head.render ? head.render(item) : item[head.key]}
@@ -51,8 +51,8 @@ const Table: React.FunctionComponent<ITableProps<IData>> = ({
         </tbody>
       </table>
       {!loading && data.length === 0 && (
-        <div className="flex items-center justify-center text-2xl text-secondary/50 font-bold bg-gray-50 px-5 h-60 rounded-b-lg">
-          <div className="flex gap-2.5 items-center">
+        <div className="flex h-60 items-center justify-center rounded-b-lg bg-gray-50 px-5 text-2xl font-bold text-secondary/50">
+          <div className="flex items-center gap-2.5">
             <AiOutlineInbox className="text-4xl" />
             <span>No data found</span>
           </div>

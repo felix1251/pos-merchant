@@ -26,12 +26,12 @@ const Select: React.FunctionComponent<ISelectProps> = ({
       {label && (
         <div className="label -mb-1 flex justify-start gap-0.5">
           <span className="label-text text-base font-medium">{label}</span>
-          {required && <span className="text-red-600 font-bold">*</span>}
+          {required && <span className="font-bold text-red-600">*</span>}
         </div>
       )}
       <select
         name={name}
-        className={`select text-base select-bordered disabled:bg-gray-100 ${error ? "select-error" : ""} ${value ? "" : "text-gray-400"}`}
+        className={`select select-bordered text-base disabled:bg-gray-100 ${error ? "select-error" : ""} ${value ? "" : "text-gray-400"}`}
         onChange={onChange}
         disabled={disabled}
         value={value}
@@ -47,7 +47,7 @@ const Select: React.FunctionComponent<ISelectProps> = ({
       </select>
       {error && (
         <div className="label -mt-1.5">
-          <span className="label-text text-red-600 text-base">{error}</span>
+          <span className="label-text text-base text-red-600">{error}</span>
         </div>
       )}
     </label>
