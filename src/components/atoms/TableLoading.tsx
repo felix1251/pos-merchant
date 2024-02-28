@@ -15,7 +15,7 @@ const TableLoading: React.FunctionComponent<ITableLoading> = ({
         <tr key={idx}>
           {Array.from(Array(rowCount), (_rowItem, idx2) => (
             <td className="pl-0" key={idx2}>
-              <div className="bg-secondary/30 rounded-md w-full h-5 animate-pulse"></div>
+              <div className="bg-secondary/10 rounded-md w-full h-5 animate-pulse"></div>
             </td>
           ))}
         </tr>

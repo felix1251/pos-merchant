@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { TableLoading } from "@/atoms";
 import React from "react";
 
@@ -6,6 +8,7 @@ export interface ITHeads {
   name: string;
   headCustomClass?: string;
   icon?: React.ReactNode;
+  action?: React.ReactNode;
 }
 
 type IData = any[];
@@ -43,9 +46,11 @@ const Table: React.FunctionComponent<ITableProps<IData>> = ({
           {!loading ? (
             <>
               {data.map((item, idx) => (
-                <tr className="pl-0" key={idx}>
+                <tr className="font-medium text-lg" key={idx}>
                   {tHeads.map((head) => (
-                    <td key={head.key}>{item[head.key]}</td>
+                    <td className="pl-0" key={head.key}>
+                      {item[head.key]}
+                    </td>
                   ))}
                 </tr>
               ))}

@@ -137,7 +137,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
                   <LuPlus className="text-2xl text-white" />
                 </button>
               </div>
-              {formik.values.options.map((option, idx) => (
+              {formik.values.options.map((option: string, idx: number) => (
                 <div key={idx} className="max-w-sm flex gap-4">
                   <Input
                     name={`options[${idx}]`}
