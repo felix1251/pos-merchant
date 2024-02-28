@@ -7,8 +7,22 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
 const Home: React.FunctionComponent = () => {
-  const { data, loading, error } = useFirebaseItems();
   const navigate = useNavigate();
+  const { data, loading, error } = useFirebaseItems();
+
+  const tHeads: ITHeads[] = [
+    {
+      key: "name",
+      name: "Name",
+      headCustomClass: "text-primary",
+      icon: <MdKeyboardArrowDown className="text-xl mt-0.5 -ml-1" />,
+    },
+    { key: "price", name: "Price" },
+    { key: "category", name: "Category" },
+    { key: "options", name: "Options" },
+    { key: "cost", name: "Cost" },
+    { key: "stock", name: "Stock" },
+  ];
 
   return (
     <div className="w-full flex flex-col gap-6">
@@ -22,23 +36,11 @@ const Home: React.FunctionComponent = () => {
         </Button>
       </div>
       <Table tHeads={tHeads} loading={loading} data={data} />
-      {error && <div className="font-medium text-lg text-red-600">error</div>}
+      {error && (
+        <div className="font-medium text-2xl text-red-600">{error}</div>
+      )}
     </div>
   );
 };
 
 export default Home;
-
-const tHeads: ITHeads[] = [
-  {
-    key: "name",
-    name: "Name",
-    headCustomClass: "text-primary",
-    icon: <MdKeyboardArrowDown className="text-xl mt-0.5 -ml-1" />,
-  },
-  { key: "price", name: "Price" },
-  { key: "category", name: "Category" },
-  { key: "options", name: "Options" },
-  { key: "cost", name: "Cost" },
-  { key: "stock", name: "Stock" },
-];

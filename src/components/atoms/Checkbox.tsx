@@ -5,6 +5,7 @@ interface ICheckboxProps {
   label?: string;
   checked?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  disabled?: boolean;
 }
 
 const Checkbox: React.FunctionComponent<ICheckboxProps> = ({
@@ -12,14 +13,16 @@ const Checkbox: React.FunctionComponent<ICheckboxProps> = ({
   label = "'",
   checked = false,
   onChange,
+  disabled = false,
 }: ICheckboxProps) => {
   return (
     <label className="p-0 flex justify-start gap-2.5 label cursor-pointer w-fit">
       <input
         name={name}
         type="checkbox"
+        disabled={disabled}
         checked={checked}
-        className="rounded-sm checkbox checkbox-sm"
+        className="rounded-sm checkbox checkbox-sm disabled:bg-gray-400"
         onChange={onChange}
       />
       {label && (

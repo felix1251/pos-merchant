@@ -3,6 +3,7 @@ import { createItem } from "@/firebase/actions";
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { ImSpinner8 } from "react-icons/im";
 import { IoMdSend } from "react-icons/io";
 import { LuPlus } from "react-icons/lu";
 import * as Yup from "yup";
@@ -10,7 +11,9 @@ import * as Yup from "yup";
 const ItemForm: React.FunctionComponent<IItemFormProp> = ({
   label,
   isEditing = false,
-  itemData = itemDataDefault,
+  itemData = ItemDataDefault,
+  loading = false,
+  error = "",
 }: IItemFormProp) => {
   const [option, setOption] = useState<string>("");
   const categoryOptions = ["Cake", "Pie", "Fried"];
@@ -56,7 +59,12 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
 
   return (
     <div className="flex flex-col gap-3">
-      <h2 className="text-2xl text-secondary font-semibold">{label}</h2>
+      <div className="flex gap-4 items-center">
+        <h2 className="text-3xl text-secondary font-semibold">{label}</h2>
+        {loading && !error && (
+          <ImSpinner8 className="text-3xl text-secondary animate-spin" />
+        )}
+      </div>
       <form
         className="flex flex-col gap-7"
         onSubmit={(event) => {
@@ -73,6 +81,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
             value={formik.values.name}
             onChange={formik.handleChange}
             error={formik.touched.name && formik.errors.name}
+            disabled={loading}
           />
           <Select
             name="category"
@@ -82,6 +91,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
             options={categoryOptions}
             onChange={formik.handleChange}
             error={formik.touched.category && formik.errors.category}
+            disabled={loading}
           />
           <Input
             name="cost"
@@ -92,6 +102,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
             placeholder="0.00"
             onChange={formik.handleChange}
             error={formik.touched.cost && formik.errors.cost}
+            disabled={loading}
           />
           <Input
             name="price"
@@ -102,6 +113,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
             placeholder="0.00"
             onChange={formik.handleChange}
             error={formik.touched.price && formik.errors.price}
+            disabled={loading}
           />
           <Input
             name="stock"
@@ -112,12 +124,14 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
             placeholder="0"
             onChange={formik.handleChange}
             error={formik.touched.stock && formik.errors.stock}
+            disabled={loading}
           />
         </div>
         <div className="flex flex-col gap-4">
           <Checkbox
             name="withOptions"
             label="Has Options?"
+            disabled={loading}
             checked={formik.values.withOptions}
             onChange={formik.handleChange}
           />
@@ -157,7 +171,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
           )}
         </div>
         <div>
-          <Button>
+          <Button disabled={loading}>
             <div className="flex gap-2 items-center">
               <IoMdSend className="text-lg" />
               {isEditing ? "Update" : "Submit"}
@@ -171,7 +185,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
 
 export default ItemForm;
 
-const itemDataDefault: IItemData = {
+export const ItemDataDefault: IItemData = {
   name: "",
   category: "",
   cost: "",
@@ -195,4 +209,6 @@ interface IItemFormProp {
   label: string;
   isEditing?: boolean;
   itemData?: IItemData;
+  loading?: boolean;
+  error?: string;
 }

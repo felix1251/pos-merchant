@@ -10,6 +10,7 @@ interface ITextInputProps {
   error?: string | false | undefined;
   action?: React.ReactNode;
   required?: boolean;
+  disabled?: boolean;
 }
 
 const TextInput: React.FunctionComponent<ITextInputProps> = ({
@@ -22,6 +23,7 @@ const TextInput: React.FunctionComponent<ITextInputProps> = ({
   error = "",
   action,
   required = false,
+  disabled = false,
 }: ITextInputProps) => {
   return (
     <label className="form-control w-full">
@@ -36,7 +38,8 @@ const TextInput: React.FunctionComponent<ITextInputProps> = ({
         name={name}
         value={value}
         placeholder={placeholder}
-        className={`text-base input input-md input-bordered w-full ${error ? "input-error" : ""}`}
+        disabled={disabled}
+        className={`text-base input input-md input-bordered w-full disabled:bg-gray-100 ${error ? "input-error" : ""}`}
         onChange={onChange}
       />
       {action && <>{action}</>}

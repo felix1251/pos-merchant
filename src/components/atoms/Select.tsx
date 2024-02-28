@@ -8,6 +8,7 @@ interface ISelectProps {
   error?: string | false | undefined;
   options?: string[];
   required?: boolean;
+  disabled?: boolean;
 }
 
 const Select: React.FunctionComponent<ISelectProps> = ({
@@ -18,6 +19,7 @@ const Select: React.FunctionComponent<ISelectProps> = ({
   name = "",
   onChange,
   required = false,
+  disabled = false,
 }: ISelectProps) => {
   return (
     <label className="form-control w-full">
@@ -29,8 +31,9 @@ const Select: React.FunctionComponent<ISelectProps> = ({
       )}
       <select
         name={name}
-        className={`select text-base select-bordered ${error ? "select-error" : ""} ${value ? "" : "text-gray-400"}`}
+        className={`select text-base select-bordered disabled:bg-gray-100 ${error ? "select-error" : ""} ${value ? "" : "text-gray-400"}`}
         onChange={onChange}
+        disabled={disabled}
         value={value}
       >
         <option className="text-gray-400" value="" disabled>

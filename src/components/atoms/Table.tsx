@@ -1,23 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { TableLoading } from "@/atoms";
 import React from "react";
-
-export interface ITHeads {
-  key: string;
-  name: string;
-  headCustomClass?: string;
-  icon?: React.ReactNode;
-  action?: React.ReactNode;
-}
-
-type IData = any[];
-
-export interface ITableProps<T = IData> {
-  tHeads?: ITHeads[];
-  data?: T;
-  loading?: boolean;
-}
 
 const Table: React.FunctionComponent<ITableProps<IData>> = ({
   tHeads = [],
@@ -68,3 +51,18 @@ const Table: React.FunctionComponent<ITableProps<IData>> = ({
 };
 
 export default Table;
+
+export interface ITHeads {
+  key: string;
+  name: string;
+  headCustomClass?: string;
+  icon?: React.ReactNode;
+}
+
+type IData = any[];
+
+export interface ITableProps<T = IData> {
+  tHeads?: ITHeads[];
+  data?: T;
+  loading?: boolean;
+}
