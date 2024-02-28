@@ -27,7 +27,7 @@ const Home: React.FunctionComponent = () => {
   return (
     <div className="w-full flex flex-col gap-4">
       <div className="flex gap-5 items-center">
-        <h2 className="text-xl text-secondary font-semibold">Item List</h2>
+        <h2 className="text-2xl text-secondary font-semibold">Item List</h2>
         <Button onClick={() => navigate("/items/new")}>
           <div className="flex items-center gap-1.5">
             <LuPlus className="-ml-2 text-lg" />

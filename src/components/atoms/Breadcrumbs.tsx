@@ -14,7 +14,7 @@ const Breadcrumbs: React.FunctionComponent<IBreadcrumbProps> = ({
   crumbs = [],
 }: IBreadcrumbProps) => {
   return (
-    <div className="text-base breadcrumbs">
+    <div className="text-[1rem] breadcrumbs">
       <ul>
         {crumbs.map((crumb, idx) => (
           <li key={idx} className="font-medium">
