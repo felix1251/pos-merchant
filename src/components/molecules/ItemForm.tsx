@@ -54,9 +54,8 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
 
       // clear/reset unwanted values
       setOption("");
-      if (!serializeValues.withOptions) {
+      if (!serializeValues.withOptions)
         formik.setFieldValue("withOptions", false);
-      }
 
       if (!isEditing) {
         createItem(serializeValues, formik.setSubmitting, navigate);
