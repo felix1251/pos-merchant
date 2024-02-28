@@ -1,5 +1,5 @@
-import { IItemData } from "@/components/molecules/ItemForm";
 import app from "@/firebase";
+import { IItemData } from "@/types/item.interface";
 import { getDatabase, push, ref, remove, set } from "firebase/database";
 import toast from "react-hot-toast";
 import { NavigateFunction } from "react-router-dom";

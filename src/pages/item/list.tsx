@@ -1,6 +1,5 @@
 import { Badge, Button, ErrorMessage, Table } from "@/atoms";
-import { ITHeads } from "@/components/atoms/Table";
-import { IItemData } from "@/components/molecules/ItemForm";
+
 import { deleteItem } from "@/firebase/actions";
 import { useFirebaseItems } from "@/firebase/hooks";
 import React from "react";
@@ -9,12 +8,13 @@ import { ImSpinner8 } from "react-icons/im";
 import { LuPlus } from "react-icons/lu";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { IItemData } from "./item.interface";
 
 const Home: React.FunctionComponent = () => {
   const navigate = useNavigate();
   const { data, loading, error, mutate } = useFirebaseItems();
 
-  const tHeads: ITHeads[] = [
+  const tHeads = [
     {
       key: "name",
       name: "Name",

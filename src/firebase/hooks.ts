@@ -1,5 +1,6 @@
-import { IItemData, ItemDataDefault } from "@/components/molecules/ItemForm";
 import app from "@/firebase";
+import { IItemData, ItemDataDefault } from "@/types/item.interface";
+
 import { get, getDatabase, ref } from "firebase/database";
 import { useCallback, useEffect, useState } from "react";
 

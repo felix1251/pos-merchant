@@ -1,5 +1,6 @@
 import { Button, Checkbox, ErrorMessage, Input, Select } from "@/atoms";
 import { createItem, updateItem } from "@/firebase/actions";
+import { IItemData, ItemDataDefault } from "@/types/item.interface";
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
@@ -212,27 +213,6 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
 };
 
 export default ItemForm;
-
-export const ItemDataDefault: IItemData = {
-  name: "",
-  category: "",
-  cost: "",
-  price: "",
-  stock: "",
-  withOptions: false,
-  options: "",
-};
-
-export interface IItemData {
-  id?: string;
-  name: string;
-  category: string;
-  cost: number | string;
-  price: number | string;
-  stock: number | string;
-  withOptions: boolean;
-  options: string;
-}
 
 interface IItemFormProp {
   label: string;
