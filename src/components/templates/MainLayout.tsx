@@ -8,7 +8,7 @@ const MainLayout: React.FunctionComponent = () => {
       <Sidebar />
       <div className="flex flex-col w-full">
         <Navbar />
-        <main className="margin-max-screen py-4">
+        <main className="margin-max-screen pb-4 pt-6">
           <Outlet />
         </main>
       </div>

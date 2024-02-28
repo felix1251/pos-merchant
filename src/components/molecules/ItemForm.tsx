@@ -1,5 +1,5 @@
 import { Button, Checkbox, ErrorMessage, Input, Select } from "@/atoms";
-import { createItem } from "@/firebase/actions";
+import { createItem, updateItem } from "@/firebase/actions";
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
@@ -51,6 +51,10 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
         );
         return;
       }
+      updateItem(
+        { ...values, options: values.options.join(), id: itemData.id },
+        formik.setSubmitting
+      );
     },
   });
 

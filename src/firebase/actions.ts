@@ -18,3 +18,21 @@ export const createItem = (
       setSubmitting(false);
     });
 };
+
+export const updateItem = (
+  item: IItemData,
+  setSubmitting: (value: boolean) => void
+) => {
+  const { id, ...otherItemData } = item;
+  const db = getDatabase(app);
+  const updateItemRef = ref(db, `items/${id}`);
+
+  set(updateItemRef, otherItemData)
+    .then(() => {
+      setSubmitting(false);
+    })
+    .catch((err) => {
+      alert("Error: " + err.message);
+      setSubmitting(false);
+    });
+};

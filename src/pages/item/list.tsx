@@ -25,7 +25,7 @@ const Home: React.FunctionComponent = () => {
       key: "options",
       name: "Options",
       render: (value: IItemData) => (
-        <div className="flex gap-2 flex-wrap">
+        <div className="flex gap-1 flex-wrap">
           {value.options &&
             value.options
               .split(",")
@@ -38,8 +38,9 @@ const Home: React.FunctionComponent = () => {
     {
       key: "actions",
       name: "Actions",
+      headCustomClass: "flex justify-end",
       render: (value: IItemData) => (
-        <div className="flex gap-2">
+        <div className="flex gap-2 justify-end">
           <button onClick={() => navigate(`items/${value.id}/edit`)}>
             <BiSolidEdit className="text-gray-400 text-2xl hover:text-primary" />
           </button>
@@ -53,7 +54,7 @@ const Home: React.FunctionComponent = () => {
 
   return (
     <div className="w-full flex flex-col gap-6">
-      <div className="flex gap-5 items-center">
+      <div className="flex gap-5 items-center justify-between">
         <h2 className="text-2xl text-secondary font-semibold">Item List</h2>
         <Button onClick={() => navigate("/items/new")}>
           <div className="flex items-center gap-1.5">
