@@ -46,18 +46,17 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
     },
     validationSchema: Yup.object(validationObject),
     onSubmit: (values) => {
+      const serializeValues = {
+        ...values,
+        withOptions: values.options.length > 0,
+        options: values.options.join(),
+      };
+
       if (!isEditing) {
-        createItem(
-          { ...values, options: values.options.join() },
-          formik.setSubmitting,
-          navigate
-        );
+        createItem(serializeValues, formik.setSubmitting, navigate);
         return;
       }
-      updateItem(
-        { ...values, options: values.options.join(), id: itemData.id },
-        formik.setSubmitting
-      );
+      updateItem({ ...serializeValues, id: itemData.id }, formik.setSubmitting);
     },
   });
 
