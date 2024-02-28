@@ -1,4 +1,4 @@
-import { Button, ErrorMessage, Table } from "@/atoms";
+import { Badge, Button, ErrorMessage, Table } from "@/atoms";
 import { ITHeads } from "@/components/atoms/Table";
 import { IItemData } from "@/components/molecules/ItemForm";
 import { useFirebaseItems } from "@/firebase/hooks";
@@ -21,7 +21,18 @@ const Home: React.FunctionComponent = () => {
     },
     { key: "price", name: "Price" },
     { key: "category", name: "Category" },
-    { key: "options", name: "Options" },
+    {
+      key: "options",
+      name: "Options",
+      render: (value: IItemData) => (
+        <div className="flex gap-2 flex-wrap">
+          {value.options &&
+            value.options
+              .split(",")
+              .map((option) => <Badge key={option} name={option} />)}
+        </div>
+      ),
+    },
     { key: "cost", name: "Cost" },
     { key: "stock", name: "Stock" },
     {

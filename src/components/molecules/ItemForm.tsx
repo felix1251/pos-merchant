@@ -134,7 +134,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
         <div className="flex flex-col gap-4">
           <Checkbox
             name="withOptions"
-            label="Has Options?"
+            label="With Options?"
             disabled={loading}
             checked={formik.values.withOptions}
             onChange={formik.handleChange}
