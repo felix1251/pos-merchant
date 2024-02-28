@@ -12,7 +12,6 @@ import { useNavigate } from "react-router-dom";
 
 const Home: React.FunctionComponent = () => {
   const navigate = useNavigate();
-
   const { data, loading, error, mutate } = useFirebaseItems();
 
   const tHeads: ITHeads[] = [

@@ -45,7 +45,7 @@ Atomic Design Pattern [Reference Here](https://medium.com/@janelle.wg/atomic-des
 ### Folder Structure
 
 ```md
-next-basket
+utak
 ├── components
 │ ├── atoms
 │ ├── molecules

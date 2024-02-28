@@ -1,7 +1,6 @@
 import { Breadcrumbs, FallbackLoading } from "@/atoms";
 import { ICrumb } from "@/components/atoms/Breadcrumbs";
 import { useFirebaseItem } from "@/firebase/hooks";
-
 import React, { Suspense } from "react";
 import { useParams } from "react-router-dom";
 
