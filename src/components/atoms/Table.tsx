@@ -32,7 +32,7 @@ const Table: React.FunctionComponent<ITableProps<IData>> = ({
                 <tr className="font-medium text-lg" key={idx}>
                   {tHeads.map((head) => (
                     <td className="pl-0" key={head.key}>
-                      {item[head.key]}
+                      {head.render ? head.render(item) : item[head.key]}
                     </td>
                   ))}
                 </tr>
@@ -57,6 +57,7 @@ export interface ITHeads {
   name: string;
   headCustomClass?: string;
   icon?: React.ReactNode;
+  render?: (value: any) => React.ReactNode;
 }
 
 type IData = any[];

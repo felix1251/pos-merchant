@@ -19,9 +19,6 @@ const ItemEdit: React.FunctionComponent = () => {
         loading={loading || error.length > 0}
         error={error}
       />
-      {error && (
-        <div className="font-medium text-4xl text-red-600">{error}</div>
-      )}
     </div>
   );
 };

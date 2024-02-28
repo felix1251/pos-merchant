@@ -3,8 +3,8 @@ import React from "react";
 
 const Navbar: React.FunctionComponent = () => {
   return (
-    <nav className="h-20 w-full py-2.5 px-40 flex items-center">
-      <div className="margin-max-screen grid justify-items-end">
+    <nav className="h-20 w-full py-2.5 px-40 flex items-center bg-white z-10">
+      <div className="margin-max-screen grid justify-items-end h-fit">
         <Avatar name="Michele Bow" />
       </div>
     </nav>

@@ -1,7 +1,9 @@
-import { Button, Table } from "@/atoms";
+import { Button, ErrorMessage, Table } from "@/atoms";
 import { ITHeads } from "@/components/atoms/Table";
+import { IItemData } from "@/components/molecules/ItemForm";
 import { useFirebaseItems } from "@/firebase/hooks";
 import React from "react";
+import { BiSolidEdit, BiSolidTrash } from "react-icons/bi";
 import { LuPlus } from "react-icons/lu";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
@@ -22,6 +24,20 @@ const Home: React.FunctionComponent = () => {
     { key: "options", name: "Options" },
     { key: "cost", name: "Cost" },
     { key: "stock", name: "Stock" },
+    {
+      key: "actions",
+      name: "Actions",
+      render: (value: IItemData) => (
+        <div className="flex gap-2">
+          <button onClick={() => navigate(`items/${value.id}/edit`)}>
+            <BiSolidEdit className="text-gray-400 text-2xl hover:text-primary" />
+          </button>
+          <button>
+            <BiSolidTrash className="text-gray-400  text-2xl hover:text-red-600" />
+          </button>
+        </div>
+      ),
+    },
   ];
 
   return (
@@ -35,10 +51,8 @@ const Home: React.FunctionComponent = () => {
           </div>
         </Button>
       </div>
+      {error && <ErrorMessage message={error} />}
       <Table tHeads={tHeads} loading={loading} data={data} />
-      {error && (
-        <div className="font-medium text-2xl text-red-600">{error}</div>
-      )}
     </div>
   );
 };

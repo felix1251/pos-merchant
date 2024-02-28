@@ -1,4 +1,4 @@
-import { Button, Checkbox, Input, Select } from "@/atoms";
+import { Button, Checkbox, ErrorMessage, Input, Select } from "@/atoms";
 import { createItem } from "@/firebase/actions";
 import { useFormik } from "formik";
 import React, { useState } from "react";
@@ -45,7 +45,10 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
     validationSchema: Yup.object(validationObject),
     onSubmit: (values) => {
       if (!isEditing) {
-        createItem({ ...values, options: values.options.join() });
+        createItem(
+          { ...values, options: values.options.join() },
+          formik.setSubmitting
+        );
         return;
       }
     },
@@ -61,10 +64,11 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
     <div className="flex flex-col gap-3">
       <div className="flex gap-4 items-center">
         <h2 className="text-3xl text-secondary font-semibold">{label}</h2>
-        {loading && !error && (
+        {(loading || formik.isSubmitting) && !error && (
           <ImSpinner8 className="text-3xl text-secondary animate-spin" />
         )}
       </div>
+      {error && <ErrorMessage message={error} />}
       <form
         className="flex flex-col gap-7"
         onSubmit={(event) => {
@@ -81,7 +85,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
             value={formik.values.name}
             onChange={formik.handleChange}
             error={formik.touched.name && formik.errors.name}
-            disabled={loading}
+            disabled={loading || formik.isSubmitting}
           />
           <Select
             name="category"
@@ -91,7 +95,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
             options={categoryOptions}
             onChange={formik.handleChange}
             error={formik.touched.category && formik.errors.category}
-            disabled={loading}
+            disabled={loading || formik.isSubmitting}
           />
           <Input
             name="cost"
@@ -102,7 +106,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
             placeholder="0.00"
             onChange={formik.handleChange}
             error={formik.touched.cost && formik.errors.cost}
-            disabled={loading}
+            disabled={loading || formik.isSubmitting}
           />
           <Input
             name="price"
@@ -113,7 +117,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
             placeholder="0.00"
             onChange={formik.handleChange}
             error={formik.touched.price && formik.errors.price}
-            disabled={loading}
+            disabled={loading || formik.isSubmitting}
           />
           <Input
             name="stock"
@@ -124,7 +128,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
             placeholder="0"
             onChange={formik.handleChange}
             error={formik.touched.stock && formik.errors.stock}
-            disabled={loading}
+            disabled={loading || formik.isSubmitting}
           />
         </div>
         <div className="flex flex-col gap-4">
@@ -157,6 +161,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
                     name={`options[${idx}]`}
                     onChange={formik.handleChange}
                     value={option}
+                    disabled={loading || formik.isSubmitting}
                   />
                   <button
                     onClick={() => addToOptions()}
@@ -171,10 +176,10 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
           )}
         </div>
         <div>
-          <Button disabled={loading}>
+          <Button type="submit" disabled={loading || formik.isSubmitting}>
             <div className="flex gap-2 items-center">
               <IoMdSend className="text-lg" />
-              {isEditing ? "Update" : "Submit"}
+              {isEditing ? "Update" : "Save"}
             </div>
           </Button>
         </div>
@@ -196,6 +201,7 @@ export const ItemDataDefault: IItemData = {
 };
 
 export interface IItemData {
+  id?: string;
   name: string;
   category: string;
   cost: number | string;
