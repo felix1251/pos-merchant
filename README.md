@@ -1,5 +1,9 @@
 # README
 
+[Deploy Website](https://utak.vercel.app/)
+
+The application does not have authentication so we assume that we are already logged in and premitted to do CRUD for the items.
+
 ## Setup Dev Environment
 
 Setup Environment Variables (.env)
@@ -101,8 +105,6 @@ I use TailwindCSS for the styles and all the components are custom-made to ensur
 ```
 
 ## Screenshots
-
-The application does not have authentication so we assume that we are already logged in and premitted to do CRUD for the items.
 
 ### Item list view
 
