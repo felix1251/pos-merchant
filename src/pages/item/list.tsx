@@ -3,8 +3,11 @@ import { ITHeads } from "@/components/atoms/Table";
 import React from "react";
 import { LuPlus } from "react-icons/lu";
 import { MdKeyboardArrowDown } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const Home: React.FunctionComponent = () => {
+  const navigate = useNavigate();
+
   const tHeads: ITHeads[] = [
     {
       key: "name",
@@ -25,7 +28,7 @@ const Home: React.FunctionComponent = () => {
     <div className="w-full flex flex-col gap-4">
       <div className="flex gap-5 items-center">
         <h2 className="text-xl text-secondary font-semibold">Item List</h2>
-        <Button>
+        <Button onClick={() => navigate("/items/new")}>
           <div className="flex items-center gap-1.5">
             <LuPlus className="-ml-2 text-lg" />
             Add Item
