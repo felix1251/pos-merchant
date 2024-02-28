@@ -22,7 +22,7 @@ export const useFirebaseItems = () => {
         });
         setData(arrayItems);
       } else {
-        setError("Items not exist");
+        setData([]);
       }
     } catch (_err) {
       setError("Something went wrong");
