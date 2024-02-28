@@ -27,12 +27,16 @@ const Home: React.FunctionComponent = () => {
       key: "options",
       name: "Options",
       render: (value: IItemData) => (
-        <div className="flex gap-1 flex-wrap">
-          {value.options &&
-            value.options
-              .split(",")
-              .map((option) => <Badge key={option} name={option} />)}
-        </div>
+        <>
+          {value.withOptions && (
+            <div className="flex gap-1 flex-wrap">
+              {value.options &&
+                value.options
+                  .split(",")
+                  .map((option) => <Badge key={option} name={option} />)}
+            </div>
+          )}
+        </>
       ),
     },
     { key: "price", name: "Price" },

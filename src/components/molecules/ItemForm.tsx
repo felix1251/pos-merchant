@@ -48,7 +48,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
     onSubmit: (values) => {
       const serializeValues = {
         ...values,
-        withOptions: values.options.length > 0,
+        withOptions: values.options.length === 0 ? false : values.withOptions,
         options: values.options.join(),
       };
 
