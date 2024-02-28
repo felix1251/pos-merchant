@@ -1,9 +1,10 @@
 import { Table } from "@/atoms";
+import { ITHeads } from "@/components/atoms/Table";
 import React from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
 const Home: React.FunctionComponent = () => {
-  const tHeads = [
+  const tHeads: ITHeads[] = [
     {
       key: "name",
       name: "Name",
@@ -17,10 +18,12 @@ const Home: React.FunctionComponent = () => {
     { key: "stock", name: "Stock" },
   ];
 
+  const data: any[] = [];
+
   return (
     <div className="w-full">
       <h2 className="text-xl text-secondary font-semibold">Item List</h2>
-      <Table tHeads={tHeads} loading={true} />
+      <Table tHeads={tHeads} loading={true} data={data} />
     </div>
   );
 };

@@ -1,24 +1,26 @@
 import { TableLoading } from "@/atoms";
 import React from "react";
 
-interface ITHeads {
+export interface ITHeads {
   key: string;
   name: string;
   headCustomClass?: string;
   icon?: React.ReactNode;
 }
 
-interface ITableProps {
+type IData = any[];
+
+export interface ITableProps<T = IData> {
   tHeads?: ITHeads[];
-  data?: any[];
+  data?: T;
   loading?: boolean;
 }
 
-const Table: React.FunctionComponent<ITableProps> = ({
+const Table: React.FunctionComponent<ITableProps<IData>> = ({
   tHeads = [],
   data = [],
   loading = false,
-}: ITableProps) => {
+}: ITableProps<IData>) => {
   return (
     <div className="overflow-x-auto w-full">
       <table className="table table-lg">
