@@ -110,6 +110,8 @@ I use TailwindCSS for the styles and all the components are custom-made to ensur
 
 ![db struct](/screenshots/rl-db-struct.png)
 
+> option entity: Firebase Realtime DB doens't store array for our option entity so we utilize string with commas and parsed it to array;
+
 ### Web item list page
 
 ![Web item list](/screenshots/web-item-list.png)
