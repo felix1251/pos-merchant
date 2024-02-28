@@ -31,7 +31,7 @@ const TextInput: React.FunctionComponent<ITextInputProps> = ({
         name={name}
         value={value}
         placeholder={placeholder}
-        className={`input input-md input-bordered w-full ${error ? "input-error" : ""}`}
+        className={`text-base input input-md input-bordered w-full ${error ? "input-error" : ""}`}
         onChange={onChange}
       />
       {error && (

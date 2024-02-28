@@ -1,4 +1,4 @@
-import { Button, Input } from "@/atoms";
+import { Button, Input, Select } from "@/atoms";
 import { useFormik } from "formik";
 import React from "react";
 import { IoMdSend } from "react-icons/io";
@@ -9,26 +9,34 @@ const ItemForm: React.FunctionComponent = () => {
     enableReinitialize: true,
     initialValues: {
       name: "",
+      category: "",
       cost: "",
       price: "",
       stock: "",
+      hasOptions: false,
     },
     validationSchema: Yup.object({
       name: Yup.string().required("Name is required"),
+      category: Yup.string().required("Category is required"),
       cost: Yup.string().required("Cost is required"),
       price: Yup.string().required("Price is required"),
       stock: Yup.string().required("Stock is required"),
+      hasOptions: Yup.boolean(),
     }),
     onSubmit: (values) => {
       console.log(values);
     },
   });
 
+  const categoryOptions = ["Cake", "Pie", "Fried"];
+
+  console.log(formik.values.category);
+
   return (
     <div className="flex flex-col gap-3">
       <h2 className="text-2xl text-secondary font-semibold">Create Item</h2>
       <form
-        className="flex flex-col gap-5"
+        className="flex flex-col gap-7"
         onSubmit={(event) => {
           event.preventDefault();
           formik.handleSubmit();
@@ -42,6 +50,14 @@ const ItemForm: React.FunctionComponent = () => {
             value={formik.values.name}
             onChange={formik.handleChange}
             error={formik.touched.name && formik.errors.name}
+          />
+          <Select
+            name="category"
+            value={formik.values.category}
+            label="Category"
+            options={categoryOptions}
+            onChange={formik.handleChange}
+            error={formik.touched.category && formik.errors.category}
           />
           <Input
             name="cost"
