@@ -1,36 +1,11 @@
 import { Button, Checkbox, Input, Select } from "@/atoms";
+import { createItem } from "@/firebase/actions";
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { IoMdSend } from "react-icons/io";
 import { LuPlus } from "react-icons/lu";
 import * as Yup from "yup";
-
-const itemDataDefault: IItemData = {
-  name: "",
-  category: "",
-  cost: "",
-  price: "",
-  stock: "",
-  withOptions: false,
-  options: [],
-};
-
-interface IItemData {
-  name: string;
-  category: string;
-  cost: number | string;
-  price: number | string;
-  stock: number | string;
-  withOptions: boolean;
-  options: string[];
-}
-
-interface IItemFormProp {
-  label: string;
-  isEditing?: boolean;
-  itemData?: IItemData;
-}
 
 const ItemForm: React.FunctionComponent<IItemFormProp> = ({
   label,
@@ -62,11 +37,14 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
       price: itemData.price,
       stock: itemData.stock,
       withOptions: itemData.withOptions,
-      options: itemData.options,
+      options: itemData.options ? itemData.options.split(",") : [],
     },
     validationSchema: Yup.object(validationObject),
     onSubmit: (values) => {
-      console.log(values);
+      if (!isEditing) {
+        createItem({ ...values, options: values.options.join() });
+        return;
+      }
     },
   });
 
@@ -192,3 +170,29 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
 };
 
 export default ItemForm;
+
+const itemDataDefault: IItemData = {
+  name: "",
+  category: "",
+  cost: "",
+  price: "",
+  stock: "",
+  withOptions: false,
+  options: "",
+};
+
+export interface IItemData {
+  name: string;
+  category: string;
+  cost: number | string;
+  price: number | string;
+  stock: number | string;
+  withOptions: boolean;
+  options: string;
+}
+
+interface IItemFormProp {
+  label: string;
+  isEditing?: boolean;
+  itemData?: IItemData;
+}
