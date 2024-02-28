@@ -63,8 +63,18 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
 
   const addToOptions = (): void => {
     if (!option) return;
-    formik.setFieldValue("options", [...formik.values.options, option]);
+    const newOptionValue = [...formik.values.options, option];
+    // make the list always unique to avoid duplicate option item
+    const makeListUnique: Set<string> = new Set(newOptionValue);
+    formik.setFieldValue("options", Array.from(makeListUnique));
     setOption("");
+  };
+
+  const removeOption = (option: string): void => {
+    formik.setFieldValue(
+      "options",
+      formik.values.options.filter((opt) => opt !== option)
+    );
   };
 
   return (
@@ -171,7 +181,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
                     disabled={loading || formik.isSubmitting}
                   />
                   <button
-                    onClick={() => addToOptions()}
+                    onClick={() => removeOption(option)}
                     className="h-12 px-3 bg-red-600 rounded-lg"
                     type="button"
                   >
