@@ -16,11 +16,10 @@ export const useFirebaseItems = () => {
       const itemsSnapshot = await get(dbRef);
       if (itemsSnapshot.exists()) {
         const items = itemsSnapshot.val();
-
         const arrayItems = Object.keys(items).map((key) => {
           return { id: key, ...items[key] };
         });
-        setData(arrayItems);
+        setData(arrayItems.reverse());
       } else {
         setData([]);
       }

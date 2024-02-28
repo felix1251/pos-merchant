@@ -10,12 +10,12 @@ const Table: React.FunctionComponent<ITableProps<IData>> = ({
 }: ITableProps<IData>) => {
   return (
     <div className="overflow-x-auto w-full">
-      <table className="table table-lg">
+      <table className="table table-lg table-pin-rows">
         <thead>
           <tr>
             {tHeads.map((head) => (
               <th
-                className={`pl-0 text-sm ${head.headCustomClass ? head.headCustomClass : ""}`}
+                className={`pl-0 text-base md:text-sm ${head.headCustomClass ? head.headCustomClass : ""}`}
                 key={head.key}
               >
                 <div className="flex gap-2 items-center">
@@ -32,7 +32,10 @@ const Table: React.FunctionComponent<ITableProps<IData>> = ({
               {data.map((item, idx) => (
                 <tr className="font-medium" key={idx}>
                   {tHeads.map((head) => (
-                    <td className="pl-0 text-[1.05rem]" key={head.key}>
+                    <td
+                      className="pl-0 text-lg md:text-[1.05rem]"
+                      key={head.key}
+                    >
                       {head.render ? head.render(item) : item[head.key]}
                     </td>
                   ))}

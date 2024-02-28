@@ -79,7 +79,7 @@ const Home: React.FunctionComponent = () => {
       <Table
         tHeads={tHeads}
         loading={data.length ? false : loading}
-        data={data.reverse()}
+        data={data}
       />
     </div>
   );

@@ -17,10 +17,10 @@ const SidebarMenus: React.FunctionComponent<ISidebarMenusProps> = ({
   return (
     <Link
       to={url}
-      className={`px-4 py-2.5 text-lg font-medium border-l-[6px] flex gap-4 items-center hover:bg-gray-100 ${active ? "border-primary text-primary" : "border-white text-secondary/70 hover:border-gray-100"}`}
+      className={`md:w-full rounded-lg md:rounded-none px-4 py-2.5 text-lg font-medium md:border-l-[6px] flex gap-4 items-center hover:bg-gray-100 ${active ? "border-primary text-primary" : "border-white text-secondary/70 hover:border-gray-100"}`}
     >
       {icon}
-      {name}
+      <span className="hidden sm:block">{name}</span>
     </Link>
   );
 };

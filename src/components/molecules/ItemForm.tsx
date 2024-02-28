@@ -45,20 +45,22 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
       options: itemData.options ? itemData.options.split(",") : [],
     },
     validationSchema: Yup.object(validationObject),
-    onSubmit: (values) => {
+    onSubmit: (values, form) => {
       const serializeValues = {
         ...values,
         withOptions: values.options.length === 0 ? false : values.withOptions,
         options: values.options.join(),
+        stock: Math.trunc(Number(values.stock)),
       };
 
       // clear/reset unwanted values
+      form.setFieldValue("stock", serializeValues.stock);
       if (option) setOption("");
       if (!serializeValues.withOptions)
-        formik.setFieldValue("withOptions", false);
+        form.setFieldValue("withOptions", false);
 
       if (!isEditing) {
-        createItem(serializeValues, formik.setSubmitting, navigate);
+        createItem(serializeValues, form.setSubmitting, navigate);
         return;
       }
       updateItem({ ...serializeValues, id: itemData.id }, formik.setSubmitting);
@@ -82,7 +84,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
   };
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-5">
       <div className="flex gap-4 items-center">
         <h2 className="text-3xl text-secondary font-semibold">{label}</h2>
         {(loading || formik.isSubmitting) && !error && (
@@ -98,7 +100,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
           return false;
         }}
       >
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-4">
           <Input
             name="name"
             label="Name"
@@ -162,7 +164,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
           />
           {formik.values.withOptions && (
             <div className="flex flex-col gap-4">
-              <div className="max-w-sm flex gap-4">
+              <div className="lg:max-w-sm flex gap-4">
                 <Input
                   value={option}
                   placeholder="Option"
@@ -177,7 +179,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
                 </button>
               </div>
               {formik.values.options.map((option: string, idx: number) => (
-                <div key={idx} className="max-w-sm flex gap-4">
+                <div key={idx} className="lg:max-w-sm flex gap-4">
                   <Input
                     name={`options[${idx}]`}
                     onChange={formik.handleChange}

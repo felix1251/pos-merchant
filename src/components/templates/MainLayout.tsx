@@ -7,9 +7,9 @@ const MainLayout: React.FunctionComponent = () => {
   return (
     <>
       <Toaster />
-      <div className="w-full flex rounded-2xl">
+      <div className="w-full flex flex-col-reverse md:flex-row rounded-2xl">
         <Sidebar />
-        <div className="flex flex-col w-full">
+        <div className="flex flex-col w-full mb-12 md:mb-0">
           <Navbar />
           <main className="margin-max-screen pb-4 pt-6">
             <Outlet />
