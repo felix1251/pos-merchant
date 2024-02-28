@@ -47,7 +47,7 @@ next-basket
 │ ├── molecules
 │ ├── organisms
 │ ├── templates
-├── app (serve as pages)
+├── pages (make sense to separate but can also be inside components)
 ```
 
 The atomic structure consists of five levels: atoms, molecules, organisms, templates, and pages.
