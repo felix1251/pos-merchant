@@ -70,7 +70,7 @@ const ItemForm: React.FunctionComponent<IItemFormProp> = ({
 
   const addToOptions = (): void => {
     if (!option) return;
-    const newOptionValue = [...formik.values.options, option];
+    const newOptionValue = [...formik.values.options, option.replace(/,/g, "")];
     // make the list always unique to avoid duplicate option item
     const makeOptionsUnique: Set<string> = new Set(newOptionValue);
     formik.setFieldValue("options", Array.from(makeOptionsUnique));
